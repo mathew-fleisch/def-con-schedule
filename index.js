@@ -48,7 +48,7 @@ function getSchedule() {
           conference.talks[talkId] = conf.talks[talkId]
         })
         log.log(JSON.stringify(conference, null, 2))
-        fs.writeFile('conference.json', JSON.stringify(conference), 'utf8')
+        fs.writeFile('conference.json', JSON.stringify(conference, null, 2), 'utf8')
         // return conference
       }
     }, (error) => { log.error(error) }
