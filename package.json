@@ -1,0 +1,22 @@
+{
+  "name": "def-con-schedule",
+  "version": "1.0.0",
+  "description": "Pulls down html from defcon website, extracts pieces and presents a (hopefully) better UI.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mathew Fleisch",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "date-format": "^1.2.0",
+    "fs-extra": "^7.0.0",
+    "timezone": "^1.0.13"
+  },
+  "devDependencies": {
+    "debug-level": "^0.3.0"
+  }
+}
