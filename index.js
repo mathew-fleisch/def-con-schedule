@@ -57,7 +57,6 @@ function getSchedule() {
 
 function processTalk($, rawTalk) {
   if (typeof $(rawTalk).attr('id') === 'undefined') return {}
-  // let talkId = $(rawTalk).attr('id')
   let talkId = ''
   let speakers = {}
   let talk = {'speakers': []}
@@ -128,8 +127,6 @@ function processTalk($, rawTalk) {
         break
       default:
         talk['abstract'] = sanitize(that.html())
-        // console.log(`that.html(): ${that.html()}`)
-        // log.error(`Unhandled variable: ${that.attr('class')}`)
         break
     }
   }
