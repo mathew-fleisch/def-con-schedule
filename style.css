@@ -1,0 +1,16 @@
+body { background-color: #444; }
+.talk-location {
+	width: 25%;
+	text-align: right;
+	display: inline-block;
+	vertical-align: top;
+	font-weight: bold;
+}
+.talk-title {
+	display: inline-block;
+	width: 70%;
+}
+.divider {
+	font-size: 30px;
+	font-family: courier, helvetica;
+}
