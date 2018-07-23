@@ -1,4 +1,21 @@
 body { background-color: #444; }
+#sidebar {
+	width:20%;
+	display:inline-block;
+	vertical-align: top;
+}
+#content {
+	width:79%;
+	display:inline-block;
+	vertical-align: top;
+}
+.days_filter, .days_filter li {
+	list-style: none;
+	list-style-type: none;
+	margin:0;
+	padding:0;
+	cursor: pointer;
+}
 .talk-location {
 	width: 25%;
 	text-align: right;
@@ -6,9 +23,36 @@ body { background-color: #444; }
 	vertical-align: top;
 	font-weight: bold;
 }
-.talk-title {
+.talk-info {
 	display: inline-block;
 	width: 70%;
+}
+.talk-title {
+	cursor: pointer;
+}
+.talk-title.selected {
+	font-weight: bold;
+}
+.talk-details {
+	display: none;
+}
+.talk-speakers, .talk-speakers li {
+	list-style: none;
+	list-style-type: none;
+	margin:0;
+	padding:0;
+	cursor: pointer;
+}
+.talk-speakers li {
+	border-left: 1px solid white;
+	border-bottom: 1px solid white;
+	padding: 10px;
+	border-radius: 0px 0px 0px 10px;
+	-moz-border-radius: 0px 0px 0px 10px;
+	-webkit-border-radius: 0px 0px 0px 10px;
+}
+.speaker-bio {
+	display: none;
 }
 .divider {
 	font-size: 30px;
