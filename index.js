@@ -8,6 +8,7 @@ const format = require('date-format')
 const fs = require('fs-extra')
 const log = new Log('DC')
 
+const minified = (process.env.MINIFIED ? process.env.MINIFIED : false)
 const url = (process.env.TARGET_URL ? process.env.TARGET_URL : 'https://www.defcon.org/html/defcon-26/dc-26-speakers.html')
 // const updateCache = (process.env.UPDATE_CACHE ? process.env.UPDATE_CACHE : false)
 
@@ -48,7 +49,7 @@ function getSchedule() {
           conference.talks[talkId] = conf.talks[talkId]
         })
         log.log(JSON.stringify(conference, null, 2))
-        fs.writeFile('conference.json', JSON.stringify(conference, null, 2), 'utf8')
+        fs.writeFile('conference.json', (minified ? JSON.stringify(conference) : JSON.stringify(conference, null, 2)), 'utf8')
         // return conference
       }
     }, (error) => { log.error(error) }
