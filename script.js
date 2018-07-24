@@ -9,18 +9,35 @@ jQuery(document).ready(function($) {
 			$(`.date_${selectedDay}`).show()
 		}
 	})
+	$(document).on('click', '.talk-speakers li', function() {
+		const thisSpeaker = $(this).attr('id')
+		// console.log(thisSpeaker)
+		if ($(`#${thisSpeaker}`).hasClass('selected')) {
+			$(`#${thisSpeaker}`).removeClass('selected')
+			$(`#bio-${thisSpeaker}`).hide()
+		} else {
+			$(`#${thisSpeaker}`).addClass('selected')
+			$(`#bio-${thisSpeaker}`).show()
+		}
+	})
 	$(document).on('click', '.talk-title', function() {
 		const thisTalk = $(this).parent().parent().attr('id')
-		console.log(`thisTalk: ${thisTalk}`)
+		// console.log(`thisTalk: ${thisTalk}`)
 
 		if ($(this).hasClass('selected')) {
 			// Talk open... close it
 			$(this).removeClass('selected')
 			$(`#${thisTalk} .talk-details`).hide()
+			$(`#${thisTalk}`).css('background-color', 'transparent')
+			$(`#${thisTalk} .talk-info`).removeClass('open')
+			$(`#${thisTalk} .talk-location`).show()
 		} else {
 			// Talk closed... open it
 			$(this).addClass('selected')
 			$(`#${thisTalk} .talk-details`).show()
+			$(`#${thisTalk}`).css('background-color', '#aaa')
+			$(`#${thisTalk} .talk-info`).addClass('open')
+			$(`#${thisTalk} .talk-location`).hide()
 		}
 	})
 	var days = {}
@@ -37,7 +54,7 @@ jQuery(document).ready(function($) {
 			const thisDate = thisTalk.date.replace(/2018\.0*/, '').replace(/\./, '/')
 			var dateDivider = ''
 			if (thisDate !== lastDate) {
-				dateDivider = `<div class="divider date_${classify(thisDate)}">${thisDate}</div>`
+				dateDivider = `<div class="divider date_divider date_${classify(thisDate)}">${thisDate}</div>`
 				days[thisDate] = thisTalk.day
 			}
 			lastDate = thisDate
@@ -45,7 +62,7 @@ jQuery(document).ready(function($) {
 			// Display only unique times
 			const thisTime = thisTalk.start
 			var timeDivider = ''
-			if (thisTime !== lastTime) timeDivider = `<div class="divider date_${classify(thisDate)} time_${classify(thisTime)}">${thisTime}</div>`
+			if (thisTime !== lastTime) timeDivider = `<div class="divider time_divider date_${classify(thisDate)} time_${classify(thisTime)}">${thisTime}</div>`
 			lastTime = thisTime
 
 			// Output
@@ -56,10 +73,13 @@ jQuery(document).ready(function($) {
 					<div class="talk-location">${clearWorkaround(thisTalk.location)}</div>
 					<div class="talk-info">
 						<div class="talk-title">${thisTalk.title}</div>
-						<div class="talk-details">
-							<ul class="talk-speakers">${getSpeakerInfo(thisTalk.speakers, conference)}</ul>
-							<div class="talk-abstract">${thisTalk.abstract}</div>
-						</div>
+					</div>
+					<div class="talk-details">
+						<div class="details-duration"><strong>Duration:</strong> ${thisTalk.duration} minutes</div>
+						<div class="details-location"><strong>Location:</strong> ${clearWorkaround(thisTalk.location)}</div>
+						<div class="details-categories"><strong>Categories:</strong> ${thisTalk.tags.join(', ')}</div>
+						<ul class="talk-speakers">${getSpeakerInfo(thisTalk.speakers, conference)}</ul>
+						<div class="talk-abstract">${thisTalk.abstract}</div>
 					</div>
 				</div>
 			`)
@@ -70,12 +90,18 @@ jQuery(document).ready(function($) {
 	drawFilters(days)
 })
 function drawFilters(days) {
-	console.log(`days: ${JSON.stringify(days, null, 2)}`)
+	// console.log(`days: ${JSON.stringify(days, null, 2)}`)
 	var dayList = ''
 	for (var date in days) {
-		dayList += `<li id="day_filter_${classify(date)}">${date} ${days[date]}</li>`
+		dayList += `<li id="day_filter_${classify(date)}">${days[date]} ${date}</li>`
 	}
-	$('#sidebar').append(`<ul class="days_filter"><li id="day_filter_all">all</li>${dayList}</ul>`)	
+	$('#sidebar').append(`
+		<h3>Filters</h3>
+		<ul class="days_filter">
+			<li id="day_filter_all">all</li>
+			${dayList}
+		</ul>`
+	)	
 }
 function getSpeakerInfo(speakerIds, conference) {
 	// console.log(speakerIds)
@@ -83,11 +109,11 @@ function getSpeakerInfo(speakerIds, conference) {
 	var ret = ''
 	speakerIds.forEach(function(speakerId) {
 		const thisSpeaker = conference.speakers[speakerId]
-		console.log(speakerId)
+		// console.log(speakerId)
 		ret += `<li id="${speakerId}">
 			<strong>${thisSpeaker.name}</strong>
 			${thisSpeaker.title}
-			<div class="speaker-bio" id="bio_${speakerId}">${thisSpeaker.bio}</div>
+			<div class="speaker-bio" id="bio-${speakerId}">${thisSpeaker.bio}</div>
 		</li>`
 	})
 	return ret
