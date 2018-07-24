@@ -54,7 +54,7 @@ body { background-color: #999; }
 .details-duration, .details-location, .details-categories {
 	font-size: 10px;
 }
-.details-categories {
+.details-duration {
 	margin-bottom:5px;
 }
 .talk-speakers, .talk-speakers li {

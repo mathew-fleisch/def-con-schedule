@@ -64,7 +64,7 @@ jQuery(document).ready(function($) {
 			var timeDivider = ''
 			if (thisTime !== lastTime) timeDivider = `<div class="divider time_divider date_${classify(thisDate)} time_${classify(thisTime)}">${thisTime}</div>`
 			lastTime = thisTime
-
+			var category = (thisTalk.tags.length ? `<div class="details-categories"><strong>Categories:</strong> ${thisTalk.tags.join(', ')}</div>` : '')
 			// Output
 			$('#content').append(`
 				${dateDivider}
@@ -75,9 +75,9 @@ jQuery(document).ready(function($) {
 						<div class="talk-title">${thisTalk.title}</div>
 					</div>
 					<div class="talk-details">
-						<div class="details-duration"><strong>Duration:</strong> ${thisTalk.duration} minutes</div>
 						<div class="details-location"><strong>Location:</strong> ${clearWorkaround(thisTalk.location)}</div>
-						<div class="details-categories"><strong>Categories:</strong> ${thisTalk.tags.join(', ')}</div>
+						${category}
+						<div class="details-duration"><strong>Duration:</strong> ${thisTalk.duration} minutes</div>
 						<ul class="talk-speakers">${getSpeakerInfo(thisTalk.speakers, conference)}</ul>
 						<div class="talk-abstract">${thisTalk.abstract}</div>
 					</div>
