@@ -1,10 +1,10 @@
 ## DEF CON 26 Schedule
 
-Currently this script scrapes the [def con schedule](https://www.defcon.org/html/defcon-26/dc-26-speakers.html) and extracts the data into a json object. The json object that is generated is saved to a hard-coded file named [conference.json](conference.json). Maybe some day, there will be a UI...
+Currently this script scrapes the [def con schedule](https://www.defcon.org/html/defcon-26/dc-26-speakers.html) and extracts the data into a json object. The json object that is generated is saved to a hard-coded file named [conference.json](conference.json). I also built a simple UI for the data to be displayed. 
 
 ### Usage
 	npm install
-	MINIFIED=FALSE DEBUG_LEVEL=LOG npm start
+	AS_JS_OBJ=TRUE MINIFIED=TRUE DEBUG_LEVEL=LOG npm start
 
 	# Possible DEBUG_LEVEL levels
 	#   - DEBUG_LEVEL=DEBUG  # show errors, warnings, info and debug
@@ -18,6 +18,10 @@ Currently this script scrapes the [def con schedule](https://www.defcon.org/html
 	# and tabbing or not.
 	# Minified: 295K
 	# Standard: 317K
+
+	# The AS_JS_OB environment variable is a boolean (default: FALSE)
+	# that saves a stringified JSON object to a js file under the global
+	# window.conf scope. Passing false will generate a json file.
 
 ### Example Data
 Below is an example of how the conference object looks. It is split up into two main sections: speakers, and talks. Each speaker is keyed by a slug of the user's last name followed by any other names. This sorts the speakers by last name within their internal ids. Each talk is keyed by a slug of the title, which sorts them alphabetically. There is a speakers array in each of the 'talks' which can be used to look up bio/title for each user. Time/location information is extracted with regular expression string matching into individual fields. In the case that time/location data cannot be extracted, a 'rawDetails' field is retained for every talk. After the time/location data, the website sometimes shows category information about the talk (i.e. whether it is a demo, exploit or some combination of a few others). I have transformed this csv string as an array of strings named 'tags.' Finally the abstract of each talk contains the original html to preserve paragraph formatting.  
