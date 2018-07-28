@@ -5,15 +5,25 @@
 	<title>DEF CON 26 Schedule</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="conference.js?1532818081"></script>
-	<script type="text/javascript" src="script.js?1532818081"></script>
+	<script type="text/javascript" src="conference.js?1532822231"></script>
+	<script type="text/javascript" src="script.js?1532822231"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css?1532818081">
+	<link rel="stylesheet" href="style.css?1532822231">
 </head>
 <body>
 	<h2>DEF CON 26 Schedule</h2>
 	<p>I wanted to view the <a href="https://www.defcon.org/html/defcon-26/dc-26-schedule.html" target="_blank">DEF CON 26 schedule</a> in this layout, <a href="https://github.com/mathew-fleisch/def-con-schedule" target="_blank">so I made a scraper</a> in nodejs, and used jquery to build the page.</p>
-	<div id="sidebar"></div>
+	<div id="sidebar">
+		<div class="topbar">
+			<div class="topbar-title"><h2>DEF CON 26 Schedule</h2></div>
+			<div class="menu-icon">
+				<div class="bar1"></div>
+				<div class="bar2"></div>
+				<div class="bar3"></div>
+			</div>
+		</div>
+		<div id="sidebar-container"></div>
+	</div>
 	<div id="content">
 		<div id="talks-container"></div>
 		<div id="speakers-container"></div>
