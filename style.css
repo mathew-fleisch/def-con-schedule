@@ -21,18 +21,18 @@ h4 {
 	border-left:1px solid white;
 }
 #talks-container {
-	display: none;
+	/*display: none;*/
 	padding: 0 10px;
 }
 #speakers-container {
-	/*display:none;*/
+	display:none;
 	padding: 0 10px;
 }
 #talk-filters {
-	display: none;
+	/*display: none;*/
 }
 #speaker-filters {
-	/*display: none;*/
+	display: none;
 }
 .days_filter, .days_filter li, .section-selector, .section-selector li, .speaker-jump, .speaker-jump li {
 	list-style: none;
