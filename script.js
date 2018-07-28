@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
 			// Talk closed... open it
 			$(this).addClass('selected')
 			$(`#${thisTalk} .talk-details`).show()
-			$(`#${thisTalk}`).css('background-color', '#aaa')
+			$(`#${thisTalk}`).css('background-color', '#444')
 			$(`#${thisTalk} .talk-info`).addClass('open')
 			$(`#${thisTalk} .talk-location`).hide()
 		}
@@ -83,7 +83,7 @@ jQuery(document).ready(function($) {
 			const thisDate = thisTalk.date.replace(/2018\.0*/, '').replace(/\./, '/')
 			let dateDivider = ''
 			if (thisDate !== lastDate) {
-				dateDivider = `<div class="divider date_divider date_${classify(thisDate)}">${thisDate}<span class="toTop"><a href="#">Back to top</a></span></div>`
+				dateDivider = `<div class="divider date_divider date_${classify(thisDate)}">${thisTalk.day} ${thisDate}<span class="toTop"><a href="#">Back to top</a></span></div>`
 				days[thisDate] = thisTalk.day
 			}
 			lastDate = thisDate
@@ -170,7 +170,7 @@ function drawFilters(days, lastUpdated, letters) {
     <span id="speaker-filters">
       <hr />
 
-      <h3>By Last Name</h3>
+      <h3>Jump To</h3>
       <ul class="speaker-jump">${letters.join('\n')}</ul>
     </span>
 		<hr />
