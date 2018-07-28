@@ -41,6 +41,32 @@ jQuery(document).ready(function($) {
         break
 		}
 	})
+  $(document).on('click', '.expand-collapse li', function() {
+    const thisId = $(this).attr('id')
+    const isCollapsed = $(this).hasClass('collapsed')
+    // console.log(`${thisId}: ${isCollapsed ? 'collapsed' : 'not collapsed'}`)
+    switch(thisId) {
+      case 'expand-talks':
+        if (isCollapsed) {
+          $('.talk-title').removeClass('selected').click()
+          $(this).removeClass('collapsed').text('- All Talks')
+        } else {
+          $('.talk-title').addClass('selected').click()
+          $(this).addClass('collapsed').text('+ All Talks')
+        }
+        break
+
+      case 'expand-bios':
+        if (isCollapsed) {
+          $('.talk-speakers li').removeClass('selected').click()
+          $(this).removeClass('collapsed').text('- All Bios')
+        } else {
+          $('.talk-speakers li').addClass('selected').click()
+          $(this).addClass('collapsed').text('+ All Bios')
+        }
+        break
+    }
+  })
 	$(document).on('click', '.talk-title', function() {
 		const thisTalk = $(this).parent().parent().attr('id')
 		// console.log(`thisTalk: ${thisTalk}`)
@@ -166,6 +192,12 @@ function drawFilters(days, lastUpdated, letters) {
   			<li id="day_filter_all">all</li>
   			${dayList}
   		</ul>
+      <hr />
+      <h3>Expand / Collapse</h3>
+      <ul class="expand-collapse">
+        <li id="expand-talks" class="collapsed">+ All Talks</li>
+        <li id="expand-bios" class="collapsed">+ All Bios</li>
+      </ul>
     </span>
     <span id="speaker-filters">
       <hr />

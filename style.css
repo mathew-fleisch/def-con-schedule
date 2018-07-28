@@ -1,10 +1,10 @@
 body { 
 	background-color: #222;
-	font-family: courier, helvetica;
 	color: #bbb;
 	padding: 10px;
+	font-size:1em;
 }
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, strong {
 	color:#62d9f3;
 }
 h3 {
@@ -12,7 +12,7 @@ h3 {
 	font-weight: bold;
 }
 h4 {
-	font-size:12px;
+	font-size: 1em;
 	font-weight: bold;
 }
 hr {
@@ -52,7 +52,7 @@ a:hover {
 #speaker-filters {
 	display: none;
 }
-.days_filter, .days_filter li, .section-selector, .section-selector li, .speaker-jump, .speaker-jump li {
+.days_filter, .days_filter li, .section-selector, .section-selector li, .speaker-jump, .speaker-jump li, .expand-collapse, .expand-collapse li {
 	list-style: none;
 	list-style-type: none;
 	margin:0;
@@ -60,13 +60,18 @@ a:hover {
 	cursor: pointer;
 	color:#fff;
 }
+
+.days_filter li:hover, .section-selector li:hover,  .speaker-jump li:hover, .expand-collapse li:hover {
+	color:#62d9f3;
+	text-decoration: underline;
+}
 .speaker-jump li {
 	display: inline-block;
 	padding: 0 0 0 10px;
 	font-weight:bold;
 }
 .toTop {
-	font-size: 11px;
+	font-size: 0.5em;
 	float:right;
 	padding:30px 0 0 0;
 }
@@ -107,7 +112,7 @@ a:hover {
 	padding: 0 20px;
 }
 .details-duration, .details-location, .details-categories {
-	font-size: 10px;
+	font-size: 0.9em;
 }
 .details-duration {
 	margin-bottom:5px;
@@ -130,15 +135,15 @@ a:hover {
 }
 .talk-abstract {
 	padding: 10px 0;
-	font-size: 12px;
+	font-size: 1em;
 }
 .last-updated {
-	font-size: 10px;
+	font-size: 0.9em;
 	text-align: center;
 }
 .speaker-bio {
 	display: none;
-	font-size:12px;
+	font-size: 1em;
 }
 .date_divider, .letter-divider {
 	font-size: 30px;
@@ -173,7 +178,7 @@ a:hover {
 	border:0;
 }
 .speaker-talks {
-	font-size:11px;
+	font-size: 0.9em;
 	margin:0 0 0 10px;
 	padding: 0 0 0 10px;
 	list-style-type: square;
