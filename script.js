@@ -87,9 +87,9 @@ jQuery(document).ready(function($) {
 	} else { 
 		console.log('could not load conference')
 	}
-	drawFilters(days)
+	drawFilters(days, window.lastUpdated)
 })
-function drawFilters(days) {
+function drawFilters(days, lastUpdated) {
 	// console.log(`days: ${JSON.stringify(days, null, 2)}`)
 	var dayList = ''
 	for (var date in days) {
@@ -100,7 +100,11 @@ function drawFilters(days) {
 		<ul class="days_filter">
 			<li id="day_filter_all">all</li>
 			${dayList}
-		</ul>`
+		</ul>
+
+		<hr />
+		<div class="last-updated">Last Updated: ${lastUpdated}</div>
+		`
 	)	
 }
 function getSpeakerInfo(speakerIds, conference) {

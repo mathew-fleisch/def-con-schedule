@@ -75,7 +75,11 @@ body { background-color: #999; }
 }
 .talk-abstract {
 	padding: 10px 0;
-	font-size:12px;
+	font-size: 12px;
+}
+.last-updated {
+	font-size: 10px;
+	text-align: center;
 }
 .speaker-bio {
 	display: none;

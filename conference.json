@@ -402,7 +402,7 @@
     },
     "krotofil-marina": {
       "name": "Marina Krotofil",
-      "title": "Principal Analyst, FireEye",
+      "title": "ICS/SCADA Security Professional",
       "bio": "Marina Krotofil is an experienced ICS/SCADA professional. She previously worked as a Principal Analyst in Cyber-Physical group at FireEye (USA), Lead Cyber Security Researcher at Honeywell (USA) and as a Senior Security Consultant at the European Network for Cyber Security (Netherlands). She spent seven years researching on offensive Industrial Control Systems (ICS) security: discovering and weaponizing unique attack vectors, engineering damage scenarios and understanding attacker techniques when exploiting ICS. Marina offensive security skills serves her well during Incident Responses, ICS malware analysis and when engineering defenses. She authored more than 20 academic and white papers on ICS security and is a frequent speaker at the leading security events around the world. She holds MBA in Technology Management, MSc in Telecommunication and MSc in Information and Communication Systems.<br />@marmusha"
     },
     "law-seth": {
@@ -903,7 +903,7 @@
     "xiao-feng": {
       "name": "Feng Xiao",
       "title": "Hacker",
-      "bio": "Feng Xiao will be a Ph.D. student at The Pennsylvania State University soon. He enjoys hacking all kinds of systems as well as finding vulnerabilities. He received his B.S. in Computer Science from Wuhan University in 2018. He was the recipient of the first prize in the National Undergraduate Information Security Contest, China in 2016, and Third Prize of 2015 0CTF. <br />https://xiaofen9.github.io"
+      "bio": "Feng Xiao will be a Ph.D. student at The Pennsylvania State University soon. He enjoys hacking all kinds of systems as well as finding vulnerabilities. He received his B.S. in Computer Science from Wuhan University in 2018. <br /> He has published three papers (including posters) in well-known security conferences like CCS, MobiCom, ICICS etc. He was also the recipient of First Prize in 2016 China Undergraduate Security Contest, First Prize of 2015 BCTF, and Third Prize of 2015 0CTF.<br /><!--https://xiaofen9.github.io-->http://fxiao.me"
     },
     "yang-wenlin": {
       "name": "Wenlin Yang",
@@ -2687,8 +2687,8 @@
     },
     "through-the-eyes-of-the-attacker-designing-embedded-systems-exploits-for-industrial-control-systems": {
       "speakers": [
-        "krotofil-marina",
-        "wetzels-jos"
+        "wetzels-jos",
+        "krotofil-marina"
       ],
       "title": "Through the Eyes of the Attacker: Designing Embedded Systems Exploits for Industrial Control Systems",
       "fullDate": "Sat 11 Aug 2018 10:00:00 AM PDT",

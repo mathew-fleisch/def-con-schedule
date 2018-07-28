@@ -20,6 +20,8 @@ function getSchedule() {
   axios.get(url)
     .then((response) => {
       if(response.status === 200) {
+        // console.log(new Date)
+        let now = new Date
         let conf = {
           'speakers': {},
           'talks': {}
@@ -51,7 +53,7 @@ function getSchedule() {
         })
         log.log(JSON.stringify(conference, null, 2))
         if (asJsObj) {
-          fs.writeFile('conference.js', 'window.conf = "' + (minified ? JSON.stringify(conference) : JSON.stringify(conference, null, 2)).replace(/\"/g, '\\\"') + '"', 'utf8')
+          fs.writeFile('conference.js', 'window.lastUpdated = "' + now.toISOString() + '";window.conf = "' + (minified ? JSON.stringify(conference) : JSON.stringify(conference, null, 2)).replace(/\"/g, '\\\"') + '"', 'utf8')
         } else {
           fs.writeFile('conference.json', (minified ? JSON.stringify(conference) : JSON.stringify(conference, null, 2)), 'utf8')
         }
