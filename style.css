@@ -140,7 +140,7 @@ h4 {
 }
 .speaker-talks {
 	font-size:11px;
-	margin:0;
+	margin:0 0 0 10px;
 	padding: 0 0 0 10px;
 	list-style-type: square;
 }
