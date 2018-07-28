@@ -1,4 +1,12 @@
 body { background-color: #999; }
+h3 {
+	font-size:14px;
+	font-weight: bold;
+}
+h4 {
+	font-size:12px;
+	font-weight: bold;
+}
 #sidebar {
 	width:15%;
 	display:inline-block;
@@ -12,12 +20,31 @@ body { background-color: #999; }
 	vertical-align: top;
 	border-left:1px solid white;
 }
-.days_filter, .days_filter li {
+#talks-container {
+	display: none;
+	padding: 0 10px;
+}
+#speakers-container {
+	/*display:none;*/
+	padding: 0 10px;
+}
+#talk-filters {
+	display: none;
+}
+#speaker-filters {
+	/*display: none;*/
+}
+.days_filter, .days_filter li, .section-selector, .section-selector li, .speaker-jump, .speaker-jump li {
 	list-style: none;
 	list-style-type: none;
 	margin:0;
 	padding:0;
 	cursor: pointer;
+}
+.toTop {
+	font-size: 11px;
+	float:right;
+	padding:30px 0 0 0;
 }
 .talk {
 	border-radius: 10px 10px 10px 10px;
@@ -85,14 +112,13 @@ body { background-color: #999; }
 	display: none;
 	font-size:12px;
 }
-.date_divider {
+.date_divider, .letter-divider {
 	font-size: 30px;
 	font-family: courier, helvetica;
 	font-weight: bold;
 	background-color:#444;
 	color:#ddd;
 	padding: 5px 10px;
-	margin: 5px 10px;
 	border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
@@ -102,4 +128,31 @@ body { background-color: #999; }
 	font-family: courier, helvetica;
 	border-top: 1px solid #888;
 	padding: 4px 10px;
+}
+
+.speaker {
+	padding-top: 10px;
+	margin-bottom: 10px;
+	border-top: 1px solid white;
+}
+.first-speaker {
+	border:0;
+}
+.speaker-talks {
+	font-size:11px;
+	margin:0;
+	padding: 0 0 0 10px;
+	list-style-type: square;
+}
+ @media only screen and (max-width: 980px) {
+ 	#sidebar {
+ 		width: 100%;
+ 		text-align: center;
+ 	}
+ 	#content {
+ 		width: 100%;
+ 	}
+ 	.talk-details {
+ 		width:100%;
+ 	}
 }

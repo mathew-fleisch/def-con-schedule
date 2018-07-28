@@ -10,14 +10,35 @@ jQuery(document).ready(function($) {
 		}
 	})
 	$(document).on('click', '.talk-speakers li', function() {
-		const thisSpeaker = $(this).attr('id')
+		const thisSpeaker = $(this).attr('id').replace(/^talk-/, '')
 		// console.log(thisSpeaker)
-		if ($(`#${thisSpeaker}`).hasClass('selected')) {
-			$(`#${thisSpeaker}`).removeClass('selected')
+		if ($(`#talk-${thisSpeaker}`).hasClass('selected')) {
+			$(`#talk-${thisSpeaker}`).removeClass('selected')
 			$(`#bio-${thisSpeaker}`).hide()
 		} else {
-			$(`#${thisSpeaker}`).addClass('selected')
+			$(`#talk-${thisSpeaker}`).addClass('selected')
 			$(`#bio-${thisSpeaker}`).show()
+		}
+	})
+	$(document).on('click', '.section-selector li', function() {
+		const thisSection = $(this).attr('id')
+		// console.log(`thisSection: ${thisSection}`)
+		switch(thisSection) {
+			case 'talks-selector':
+				$('#talks-container').show()
+				$('#speakers-container').hide()
+        $('#talk-filters').show()
+        $('#speaker-filters').hide()
+  			break
+			case 'speakers-selector':
+				$('#talks-container').hide()
+				$('#speakers-container').show()
+        $('#talk-filters').hide()
+        $('#speaker-filters').show()
+  			break
+      default:
+        console.error('Whaaaacha doing?')
+        break
 		}
 	})
 	$(document).on('click', '.talk-title', function() {
@@ -40,33 +61,41 @@ jQuery(document).ready(function($) {
 			$(`#${thisTalk} .talk-location`).hide()
 		}
 	})
-	var days = {}
+	let days = {}
+  let letters = []
+  let countTalks = {}
 	if (window.conf) {
 		const conference = JSON.parse(window.conf)
+		// Build talks section
 		const conferenceSorted = sortByDate(conference)
-		console.log(conference)
-		var lastTime = ''
-		var lastDate = ''
+		// console.log(conference)
+		let lastTime = ''
+		let lastDate = ''
 		for (const talk in conferenceSorted) {
 			const thisTalk = conference.talks[conferenceSorted[talk]]
 
+      thisTalk.speakers.forEach(function (speakerId) {
+        if (!countTalks.hasOwnProperty(speakerId)) countTalks[speakerId] = []
+        countTalks[speakerId].push(`${thisTalk.title} - ${thisTalk.fullDate}`)
+      })
+
 			// Display only unique dates
 			const thisDate = thisTalk.date.replace(/2018\.0*/, '').replace(/\./, '/')
-			var dateDivider = ''
+			let dateDivider = ''
 			if (thisDate !== lastDate) {
-				dateDivider = `<div class="divider date_divider date_${classify(thisDate)}">${thisDate}</div>`
+				dateDivider = `<div class="divider date_divider date_${classify(thisDate)}">${thisDate}<span class="toTop"><a href="#">Back to top</a></span></div>`
 				days[thisDate] = thisTalk.day
 			}
 			lastDate = thisDate
 
 			// Display only unique times
 			const thisTime = thisTalk.start
-			var timeDivider = ''
+			let timeDivider = ''
 			if (thisTime !== lastTime) timeDivider = `<div class="divider time_divider date_${classify(thisDate)} time_${classify(thisTime)}">${thisTime}</div>`
 			lastTime = thisTime
-			var category = (thisTalk.tags.length ? `<div class="details-categories"><strong>Categories:</strong> ${thisTalk.tags.join(', ')}</div>` : '')
+			let category = (thisTalk.tags.length ? `<div class="details-categories"><strong>Categories:</strong> ${thisTalk.tags.join(', ')}</div>` : '')
 			// Output
-			$('#content').append(`
+			$('#talks-container').append(`
 				${dateDivider}
 				${timeDivider}
 				<div class="talk date_${classify(thisDate)} time_${classify(thisTime)}" id="${idify(talk)}">
@@ -84,24 +113,66 @@ jQuery(document).ready(function($) {
 				</div>
 			`)
 		}
+
+    // console.log(JSON.stringify(countTalks, null, 2))
+
+    // Build speakers section
+    let lastLetter = ''
+    let trig = false
+    for (const speaker in conference.speakers) {
+      const thisSpeaker = conference.speakers[speaker]
+      // console.log(`${speaker}: ${JSON.stringify(thisSpeaker, null, 2)}`)
+      // console.log(speaker.charAt(0))
+      if (lastLetter !== speaker.charAt(0)) {
+        lastLetter = speaker.charAt(0)
+        $('#speakers-container').append(`<div class="letter-divider" id="letter-${lastLetter}">${lastLetter}<span class="toTop"><a href="#">Back to top</a></span></div>`)
+        letters.push(`<li><a href="#letter-${lastLetter}">${lastLetter}</a></li>`)
+        trig = true
+      }
+
+      $('#speakers-container').append(`
+        <div class="speaker ${trig ? 'first-speaker' : ''}">
+          <strong>${thisSpeaker.name}</strong> - ${thisSpeaker.title}
+          <div class="bio" id="speaker-bio-${speaker}">${thisSpeaker.bio}</div>
+          <br />
+          <h4>Talk${countTalks[speaker].length > 1 ? 's' : ''}:</h4>
+          <ul class="speaker-talks"><li>${countTalks[speaker].join('</li><li>')}</li></ul>
+        </div>
+      `)
+      trig = false
+    }
 	} else { 
 		console.log('could not load conference')
 	}
-	drawFilters(days, window.lastUpdated)
+	drawFilters(days, window.lastUpdated, letters)
 })
-function drawFilters(days, lastUpdated) {
+function drawFilters(days, lastUpdated, letters) {
 	// console.log(`days: ${JSON.stringify(days, null, 2)}`)
-	var dayList = ''
-	for (var date in days) {
+	let dayList = ''
+	for (let date in days) {
 		dayList += `<li id="day_filter_${classify(date)}">${days[date]} ${date}</li>`
 	}
 	$('#sidebar').append(`
-		<h3>Filters</h3>
-		<ul class="days_filter">
-			<li id="day_filter_all">all</li>
-			${dayList}
-		</ul>
+    <h3>Sections</h3>
 
+    <ul class="section-selector">
+      <li id="talks-selector">Talks</li>
+      <li id="speakers-selector">Speakers</li>
+    </ul>
+    <span id="talk-filters">
+      <hr />
+  		<h3>Talk Filters</h3>
+  		<ul class="days_filter">
+  			<li id="day_filter_all">all</li>
+  			${dayList}
+  		</ul>
+    </span>
+    <span id="speaker-filters">
+      <hr />
+
+      <h3>By Last Name</h3>
+      <ul class="speaker-jump">${letters.join('\n')}</ul>
+    </span>
 		<hr />
 		<div class="last-updated">Last Updated: ${lastUpdated}</div>
 		`
@@ -110,11 +181,11 @@ function drawFilters(days, lastUpdated) {
 function getSpeakerInfo(speakerIds, conference) {
 	// console.log(speakerIds)
 	// return speakerIds.join(' ')
-	var ret = ''
+	let ret = ''
 	speakerIds.forEach(function(speakerId) {
 		const thisSpeaker = conference.speakers[speakerId]
 		// console.log(speakerId)
-		ret += `<li id="${speakerId}">
+		ret += `<li id="talk-${speakerId}">
 			<strong>${thisSpeaker.name}</strong>
 			${thisSpeaker.title}
 			<div class="speaker-bio" id="bio-${speakerId}">${thisSpeaker.bio}</div>
