@@ -90,6 +90,7 @@ a:hover {
 	display: inline-block;
 	vertical-align: top;
 	font-weight: bold;
+	color:#62d9f3;
 }
 .talk-info {
 	display: inline-block;
@@ -112,7 +113,6 @@ a:hover {
 }
 .talk-details {
 	display: none;
-	width:80%;
 	padding: 0 20px;
 }
 .details-duration, .details-location, .details-categories {
@@ -165,12 +165,12 @@ a:hover {
 	font-size: 20px;
 	font-family: courier, helvetica;
 	border-top: 1px solid #888;
+	border-left: 1px solid #888;
 	padding: 4px 10px;
 	margin-top:10px;
-	background-color:#888;
-	border-radius: 10px 10px 10px 10px;
-	-moz-border-radius: 10px 10px 10px 10px;
-	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 0 0 0;
+	-moz-border-radius: 10px 0 0 0;
+	-webkit-border-radius: 10px 0 0 0;
 }
 .speaker {
 	padding-top: 10px;
