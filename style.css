@@ -186,6 +186,9 @@ a:hover {
 	padding: 0 0 0 10px;
 	list-style-type: square;
 }
+.speaker-talk-title {
+	font-weight: bold;
+}
 button:focus {
 	outline: none;
 }

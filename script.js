@@ -175,7 +175,7 @@ jQuery(document).ready(function($) {
           <strong>${thisSpeaker.name}</strong> - ${thisSpeaker.title}
           <div class="bio" id="speaker-bio-${speaker}">${thisSpeaker.bio}</div>
           <br />
-          <h4>Talk${countTalks[speaker].length > 1 ? 's' : ''}:</h4>
+          <span class="speaker-talk-title">Talk${countTalks[speaker].length > 1 ? 's' : ''}:</span>
           <ul class="speaker-talks"><li>${countTalks[speaker].join('</li><li>')}</li></ul>
         </div>
       `)
