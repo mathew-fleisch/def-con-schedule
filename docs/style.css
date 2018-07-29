@@ -42,6 +42,9 @@ a:hover {
 	vertical-align: top;
 	border-left:1px solid white;
 }
+.main-description {
+	padding: 10px;
+}
 #talks-container {
 	/*display: none;*/
 	padding: 0 10px;
