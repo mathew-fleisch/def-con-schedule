@@ -1,14 +1,14 @@
 jQuery(document).ready(function($) {
-  $(document).on('click', '.menu-icon', function() {
+  $(document).on('click', '.hamburger', function() {
     // $(this).hasClass('change')
-    const isOpen = $(this).hasClass('is-open')
+    const isOpen = $(this).hasClass('is-active')
     console.log('Open/Close mobile menu')
     if (isOpen) {
       $('#sidebar-container').slideUp(100)
-      $(this).removeClass('is-open')
+      $(this).removeClass('is-active')
     } else {
       $('#sidebar-container').slideDown(100)
-      $(this).addClass('is-open')
+      $(this).addClass('is-active')
     }
   })
   $(document).on('click', '.days_filter li', function() {
@@ -41,12 +41,14 @@ jQuery(document).ready(function($) {
         $('#speakers-container').hide()
         $('#talk-filters').show()
         $('#speaker-filters').hide()
+        $('h2').text('DEF CON 26 Schedule')
         break
       case 'speakers-selector':
         $('#talks-container').hide()
         $('#speakers-container').show()
         $('#talk-filters').hide()
         $('#speaker-filters').show()
+        $('h2').text('DEF CON 26 Speakers')
         break
       default:
         console.error('Whaaaacha doing?')
