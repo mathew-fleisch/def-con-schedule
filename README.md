@@ -1,6 +1,6 @@
 ## DEF CON 26 Schedule
 
-Currently this script scrapes the [def con schedule](https://www.defcon.org/html/defcon-26/dc-26-speakers.html) and extracts the data into a json object. The json object that is generated is saved to a hard-coded file named [conference.json](docs/conference.json). I also built a [simple UI](docs) for the data to be displayed and it is currently hosted at [GitHub Pages](https://mathew-fleisch.github.io/def-con-schedule/docs/). The layout is mobile responsive and uses the color pallet of the original site.
+Currently this script scrapes the [def con schedule](https://www.defcon.org/html/defcon-26/dc-26-speakers.html) and extracts the data into a json object. The json object that is generated is saved to a hard-coded file named [conference.json](docs/conference.json). I also built a [simple UI](docs) for the data to be displayed and it is currently hosted at [GitHub Pages](https://mathew-fleisch.github.io/def-con-schedule/). The layout is mobile responsive and uses the color pallet of the original site.
 
 ### Usage
 	npm install
