@@ -217,7 +217,7 @@
     },
     "domas-christopher": {
       "name": "Christopher Domas",
-      "title": "Director of Research, Finite State",
+      "title": "",
       "bio": "Christopher Domas is a security researcher and embedded systems engineer, currently investigating scalable IoT security. He is best known for releasing impractical solutions to non-existent problems, including the world&apos;s first single instruction C compiler (M/o/Vfuscator), toolchains for generating images in program control flow graphs (REpsych), showing that all programs can be reduced to the same instruction stream (reductio), and the branchless DOOM meltdown mitigations. His more relevant work includes the sandsifter processor fuzzer, the binary visualization tool ..cantor.dust.., and the memory sinkhole x86 privilege escalation exploit.<br />@xoreaxeaxeax"
     },
     "donovan-joan": {
@@ -543,7 +543,7 @@
     "nathans-david": {
       "name": "David Nathans",
       "title": "Hacker",
-      "bio": ""
+      "bio": "David Nathans currently serves as a Product Security Manager for Siemens Healthcare, where he specializes in building cybersecurity programs and Security Operation Centers. Having previously held prominent positions in the defense, retail, managed security and healthcare industries, Nathans has a wealth of cybersecurity knowledge which he shares to help protect companies from this growing threat. His experiences and lessons learned also stem from his time building security programs at one of the largest breached retail companies in history as well as working all over the world as a cyber-operations officer for the U.S. Air Force"
     },
     "nikita": {
       "name": "Nikita",
